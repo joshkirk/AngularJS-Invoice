@@ -1,0 +1,58 @@
+<div class="row editor" ng-controller="invController">
+    <p class="h3">Add another line item or sidebar note</p>
+    <div class="col-xs-12 box">
+
+        <form class="form-horizontal" role="form" ng-submit="addItem()">
+            <div class="col-md-6">
+                <p>Enter 0 or delete price value above to remove line item.</p>
+                <div class="form-group">
+                    <label for="taskTitle" class="col-sm-2 control-label">Description</label>
+                    <div class="col-xs-10">
+                        <input type="text" ng-model="invoice.temp.title" class="form-control" id="taskTitle" placeholder="New description">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="taskDesc" class="col-sm-2 control-label">Milestone</label>
+                    <div class="col-xs-10">
+                        <input type="text" ng-model="invoice.temp.milestone" class="form-control" id="taskDesc" placeholder="New milestone">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="taskDesc" class="col-sm-2 control-label">Price</label>
+                    <div class="col-xs-10">
+                        <input type="text" ng-model="invoice.temp.price" class="form-control" id="taskDesc" placeholder="New price">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">Add</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <p>Delete part of a note above to remove the entire note.</p>
+                <div class="form-group">
+                    <label for="taskTitle" class="col-sm-2 control-label">Note Title</label>
+                    <div class="col-xs-10">
+                        <input type="text" ng-model="sidebar.temp.title" class="form-control" id="taskTitle" placeholder="New title">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="taskDesc" class="col-sm-2 control-label">Note Body</label>
+                    <div class="col-xs-10">
+                        <textarea ng-model="sidebar.temp.body" class="form-control" id="taskDesc" placeholder="Note body"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <div type="submit" class="btn btn-default" ng-click="addNote()">Add</div>
+                    </div>
+                </div>
+            </div>
+
+
+        </form>
+    </div>
+</div>

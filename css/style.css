@@ -1,0 +1,333 @@
+
+*:focus, button:active {
+    box-shadow: none !important;
+    outline: none !important;
+}
+body  {
+    font-family: 'museo-sans', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 1.4px;
+    line-height: 1.3;
+}
+.btn {
+     padding: 7px 9px 3px 10px;
+    font-size: 16px;
+ }
+.two .btn {
+    padding: 8px 9px 7.5px 10px;
+
+}
+
+#invoice-logo {
+    float: right;
+    border-bottom: 2px solid #404041;
+    padding-bottom: 30px;
+}
+.logo-row {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.invoicee-meta p {
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    letter-spacing: 2.5px;
+}
+.invoicee-meta span {
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    letter-spacing: 2.5px;
+}
+.invoicee-meta span:last-child {
+    margin-bottom: 0;
+}
+.nopadding-r {
+    padding-right: 0 !important;
+}
+.nopadding-l {
+    padding-left: 0 !important;
+}
+.nopadding-lr {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+.top-meta-row {
+    border-bottom: 10px solid #3A3A3B;
+    padding-bottom: 18px;
+}
+.project-meta-row {
+    margin-top: 28px;
+    margin-bottom: 40px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+.lead-in-p {
+    font-family: 'Yeseva One', cursive;
+    color: #A7A9AB;
+    margin-bottom: 12px;
+    text-transform: none;
+    font-weight: 500;
+    border-bottom: 1px solid #404041;
+    padding-bottom: 20px;
+}
+.table-holder {
+    padding-right: 55px;
+}
+.table-holder th {
+    width: 23%;
+}
+.table-holder table thead tr th:first-child{
+    width: 54%;
+}
+td p {
+    margin: 6.5px 0;
+}
+.table > thead > tr > th {
+    border-bottom: none;
+}
+.table > tbody > tr > td {
+    border-bottom: 1px dashed #c9c9c9;
+    border-top: 0;
+    padding: 8px 0;
+
+}
+.table {
+    margin-bottom: 0 !important;
+}
+thead {
+    border-bottom: 1px solid #404041;
+}
+td {
+    border-right: 1px dashed #c9c9c9;
+}
+td:last-child {
+    border-right: none;
+}
+th {
+    border-right: 1px dashed #c9c9c9;
+    padding: 3px 0 15px 0 !important;
+}
+th:last-child {
+    border-right: none;
+    text-align: right;
+    padding-right: 8px !important;
+}
+th, td {
+    padding-left: 8px !important;
+
+}
+th:first-child, td:first-child {
+    padding-left: 0 !important;
+
+}
+.box {
+    background-color: #fff;
+    border: 1px solid #404041;
+    border-radius: 4px;
+    box-shadow: none;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 45px 15px 15px;
+}
+.box p {
+    margin: 0 0 25px 96px;
+}
+table.table-reduce-padding td {
+    padding-right: 20px;
+    margin: 0;
+}
+
+table.table-reduce-padding p {
+    margin-bottom: 0;
+}
+
+table tfoot.subtotal tr td {
+    border-top: 0;
+    border-right: 0;
+}
+.table > tbody > tr > td:last-child {
+    text-align: right;
+    padding-right: 8px;
+}
+table tfoot.subtotal tr td p {
+    margin: 6.5px 0;
+}
+
+.editContainer {
+    width: 100%;
+    height: 300px;
+}
+
+.editor {
+    padding: 50px 0;
+}
+.editor .h3 {
+    margin-bottom: 15px;
+    font-weight: 900;
+    text-transform: uppercase;
+
+}
+.total {
+    border-top: 1px solid ;
+}
+tfoot tr td:last-child {
+    text-align: right;
+}
+table tfoot.subtotal tr td {
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid #414040;
+}
+table tfoot.subtotal tr td:first-child {
+    border-bottom: 0;
+}
+.total-meta-holder {
+    width: 46%;
+    float: right;
+    clear: both;
+    border-bottom: 1px solid #404041;
+    padding: 15.5px 8px 14.5px 8px;
+}
+.two form.editable-wrap {
+    float: right;
+}
+.addressee {
+
+}
+.message {
+
+}
+.duedate-picker input{
+    width: 16%;
+    position: absolute;
+    bottom: 3px;
+    left: 296px;
+    float: left;
+    padding-left: 7px;
+}
+.message-holder-row {
+    border-bottom: 10px solid #3A3A3B;
+    padding: 20px 0;
+}
+.our-meta {
+    margin: 20px 0 0 0;
+    letter-spacing: 2.4px;
+    font-weight: 700;
+}
+.message-holder {
+    font-family: 'Yeseva One', cursive;
+    color: #A7A9AB;
+    padding-right: 53px;
+    
+}
+
+.total-meta-holder span:first-child {
+    float: left;
+}
+.total-meta-holder span:last-child {
+    float: right;
+
+}
+.notes {
+    padding-top: 14px;
+    margin-top: 33.5px;
+    border-top: 1px solid #404041;
+}
+.note-header {
+    text-transform: uppercase;
+    font-weight: 900;
+    margin-bottom: 5px;
+}
+.tm img {
+    position: absolute;
+    top: 99px;
+    width: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.tm div p {
+    border-bottom: 1px solid #404041;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+.note-body {
+    margin-bottom: 11px;
+}
+.note-body, .message {
+    line-height: 1.7;
+}
+.main-content-row {
+    padding-bottom: 30px;
+    border-bottom: 10px solid #3A3A3B;;
+}
+.message-holder p:last-child {
+    margin-bottom: 0;
+}
+.print-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    padding: 8px;
+    color: #404041;
+    background: #ffffff;
+    border: 1px solid #404041;
+    font-size: 1.7em;
+    -webkit-transition: .15s border;
+}
+.print-btn:hover {
+    border-top-color: #fff;
+    border-left-color: #fff;
+    border-right-color: #fff;
+}
+.shown-on-mobile {
+    display: none;
+}
+@media only screen and (max-width: 1040px)  {
+    .shown-on-mobile {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 999;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        background-color: #fff;
+        display: inherit;
+        text-align: center;
+    }
+    .shown-on-mobile-inner {
+        position: absolute;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        left: 50%;
+        width: 85%;
+        }
+    .shown-on-mobile h5 {
+        letter-spacing: 2px;
+        line-height: 1.5;
+        font-family: 'Museo Sans', sans-serif;
+        font-size: 13px;
+        margin-bottom: 30px;
+    }
+    .shown-on-mobile img {
+        width: 250px;
+        display: block;
+        margin: 0 auto;
+    }
+    body {
+        overflow-y: hidden;
+    }
+}
+@media print {
+    .duedate-picker input, .print-btn {
+        display: none;
+    }
+    @page { margin: 0; }
+    body { margin: 40px 50px; }
+    .logo-row {
+        margin-top: 0;
+    }
+}

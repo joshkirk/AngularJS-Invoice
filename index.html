@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="invoicer">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link href="css/xeditable.css" rel="stylesheet">
+
+    <link href="bootstrap-3.1.1/css/bootstrap.css" rel="stylesheet">
+
+    <link href="http://fonts.googleapis.com/css?family=Yeseva+One" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
+    <script src="angular/ui-bootstrap-tpls-0.13.0.min.js"></script>
+    <script src="bootstrap-3.1.1/js/bootstrap.min.js"></script>
+    <script src="js/xeditable.min.js"></script>
+    <script src="js/invoicer.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="//use.typekit.net/zgi0xsd.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-63323655-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+</head>
+<body ng-controller="invController">
+<div class="shown-on-mobile"><div class="shown-on-mobile-inner"><h5>Sorry, this was meant to be viewed on a desktop computer, in order to export to PDF. Google Chrome is recommended.</h5><img src="images/invoice-logo.svg"></div></div>
+<div class="container ng-hide" ng-show="contentLoaded">
+    <div class="row logo-row">
+        <div class="col-xs-9"></div>
+        <div class="col-xs-3 nopadding-lr"><img id="invoice-logo" src="images/invoice-logo.svg"> </div>
+    </div>
+    <div class="row top-meta-row">
+        <div class="col-xs-9 invoicee-meta nopadding-l">
+            <p editable-text="invoice.to_company" class="top-name">{{invoice.to_company}}</p>
+            <p editable-text="invoice.to_address" class="top-street">{{invoice.to_address}}</p>
+            <div><span editable-text="invoice.to_city" class="top-city">{{invoice.to_city}},</span> <span editable-text="invoice.to_state" e-style="width: 50px">{{invoice.to_state}} </span> <span editable-text="invoice.to_zip" e-style="width: 70px">{{invoice.to_zip}}</span></div>
+        </div>
+        <div class="col-xs-3 invoicee-meta nopadding-lr">
+            <p class="our-top-name" editable-text="our_address">{{our_address}}</p>
+            <p class="our-top-street" editable-text="our_address_linetwo"">{{our_address_linetwo}}</p>
+            <div><span class="our-top-city" editable-text="our_city">{{our_city}},</span> <span editable-text="our_state" e-style="width: 50px">{{our_state}}</span> <span editable-text="our_zip" e-style="width: 70px">{{our_zip}}</span></div>
+        </div>
+    </div>
+    <div class="row project-meta-row">
+        <div class="col-xs-12 nopadding-lr"><span editable-text="invoice.number">#{{invoice.number}}</span> &nbsp;///&nbsp; <span editable-text="invoice.project_name">{{invoice.project_name}}</span> &nbsp;///&nbsp; <span>{{date | date:'MM/dd/yyyy'}}</span></div>
+    </div>
+    <div class="row main-content-row">
+        <div class="col-xs-9 table-holder nopadding-l"><p editable-text="invoice.lead_in" e-style="width: 300px" class="lead-in-p">{{invoice.lead_in}}</p>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th><span>DESCRIPTION</span></th>
+                    <th><span>MILESTONE</span></th>
+                    <th><span>TOTAL</span></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in invoice.line_items" ng-hide="(item.price == 0)">
+                    <td>
+                        <p>
+                            <span editable-text="invoice.line_items[$index].title" e-style="width: 350px">{{item.title}}</span>
+                        </p>
+                    </td>
+                    <td><p editable-text="invoice.line_items[$index].milestone" e-style="width: 87px">{{item.milestone}}</p></td>
+                    <td><p editable-text="invoice.line_items[$index].price" e-style="width: 87px">{{item.price | number}}</p></td>
+                </tr>
+
+                <tr id="dynamicInsert" class="warning" ng-show="invoice.temp.title">
+                    <td>
+                        <dl>
+                            <dt>{{invoice.temp.title}}</dt>
+                        </dl>
+                    </td>
+                    <td>{{invoice.temp.milestone}}</td>
+                    <td>${{invoice.temp.price}}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="total-meta-holder">
+                <span class="">Total: </span>
+                <span class=""><strong>${{ getSubTotal() | number}}</strong></span>
+            </div>
+
+            <div class="total-meta-holder two">
+
+                <span class="">Due By: </span>
+                <span class="input-group" editable-date="dt" e-datepicker-popup="MM-dd-yyyy" is-open="opened" datepicker-options="dateOptions" e-ng-required="true" e-style="width: 170px;">
+
+                    {{dt | date:'MM/dd/yyyy' }}
+
+                </span>
+            </div>
+        </div>
+        <div class="col-xs-3 notes nopadding-lr">
+            <div ng-repeat="item in sidebar.note"  ng-hide="(item.title == 0 || item.body == 0)">
+                <p class="note-header" editable-text="sidebar.note[$index].title" e-style="width: 294px;">{{item.title}}</p>
+                <p class="note-body" editable-textarea="sidebar.note[$index].body" e-style="width: 294px; height: 80px;">{{item.body}}</p>
+            </div>
+
+            <p class="note-header">{{sidebar.temp.title}}</p>
+            <p class="note-body">{{sidebar.temp.body}}</p>
+
+        </div>
+
+    </div>
+    <div class="row message-holder-row">
+        <div class="col-xs-9 nopadding-l message-holder">
+
+                <p class="addressee" editable-text="addressee">{{addressee}},</p>
+                <p class="message" editable-textarea="personal" e-style="width: 750px; height: 120px;">{{personal}}</p>
+                <p class="sincerely" >Sincerely,</p>
+                <p class="sincerely" >The Genies at Third Wish Creative</p>
+
+        </div>
+        <div class="col-xs-3 tm">
+            <div style="background-image: url('images/triangles.svg');">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 nopadding-l">
+            <p class="our-meta">THIRDWISHCREATIVE.COM  -  TALK@THIRDWISHCREATIVE.COM</p>
+        </div>
+        <button class="glyphicon glyphicon-save print-btn" onclick="print()"></button>
+    </div>
+    <div class="editContainer" ng-mouseenter="showEditor=true" ng-mouseleave="showEditor=false">
+        <div ng-show="showEditor" ng-include src="'editor.html'"></div>
+    </div>
+
+</div>
+
+<!------------------ SCRIPTS ------------------->
+
+
+</body>
+</html>
