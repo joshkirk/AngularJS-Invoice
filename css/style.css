@@ -41,6 +41,9 @@ body  {
 .invoicee-meta span:last-child {
     margin-bottom: 0;
 }
+.invoicee-meta {
+    padding-left: 1px;
+}
 .nopadding-r {
     padding-right: 0 !important;
 }
@@ -59,6 +62,7 @@ body  {
     margin-top: 28px;
     margin-bottom: 40px;
     font-weight: 900;
+    padding-left: 2px;
     text-transform: uppercase;
 }
 .lead-in-p {
@@ -69,12 +73,20 @@ body  {
     font-weight: 500;
     border-bottom: 1px solid #404041;
     padding-bottom: 20px;
+    padding-left: 1.5px;
 }
 .table-holder {
     padding-right: 55px;
 }
+tr td p span {
+  padding-left: 1px;
+}
+
 .table-holder th {
     width: 23%;
+}
+tr th span {
+  padding-left: 1px;
 }
 .table-holder table thead tr th:first-child{
     width: 54%;
@@ -213,11 +225,13 @@ table tfoot.subtotal tr td:first-child {
     margin: 20px 0 0 0;
     letter-spacing: 2.4px;
     font-weight: 700;
+    padding-left: 1.5px;
 }
 .message-holder {
     font-family: 'Yeseva One', cursive;
     color: #A7A9AB;
     padding-right: 53px;
+    padding-left: 1px;
     
 }
 
