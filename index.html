@@ -45,7 +45,7 @@
         <div class="col-xs-3 nopadding-lr"><img id="invoice-logo" src="images/invoice-logo.svg"> </div>
     </div>
     <div class="row top-meta-row">
-        <div class="col-xs-9 invoicee-meta nopadding-l">
+        <div class="col-xs-9 invoicee-meta">
             <p editable-text="invoice.to_company" class="top-name">{{invoice.to_company}}</p>
             <p editable-text="invoice.to_address" class="top-street">{{invoice.to_address}}</p>
             <div><span editable-text="invoice.to_city" class="top-city">{{invoice.to_city}},</span> <span editable-text="invoice.to_state" e-style="width: 50px">{{invoice.to_state}} </span> <span editable-text="invoice.to_zip" e-style="width: 70px">{{invoice.to_zip}}</span></div>
@@ -120,7 +120,7 @@
 
     </div>
     <div class="row message-holder-row">
-        <div class="col-xs-9 nopadding-l message-holder">
+        <div class="col-xs-9 message-holder">
 
                 <p class="addressee" editable-text="addressee">{{addressee}},</p>
                 <p class="message" editable-textarea="personal" e-style="width: 750px; height: 120px;">{{personal}}</p>

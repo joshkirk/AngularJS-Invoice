@@ -282,9 +282,6 @@ table tfoot.subtotal tr td:first-child {
 .shown-on-mobile {
     display: none;
 }
-.container {
-    width: 1020px;
-}
 @media only screen and (max-width: 1040px)  {
     .shown-on-mobile {
         position: absolute;
