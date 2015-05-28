@@ -135,7 +135,6 @@ th:first-child, td:first-child {
 .box {
     background-color: #fff;
     border: 1px solid #404041;
-    border-radius: 4px;
     box-shadow: none;
     margin-left: 0;
     margin-right: 0;
