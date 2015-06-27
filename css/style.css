@@ -4,7 +4,6 @@
     outline: none !important;
 }
 body  {
-    font-family: 'museo-sans', sans-serif;
     font-weight: 500;
     font-size: 11px;
     letter-spacing: 1.4px;
@@ -23,10 +22,11 @@ body  {
     float: right;
     border-bottom: 2px solid #404041;
     padding-bottom: 30px;
+    width: 100%;
 }
 .logo-row {
     margin-top: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 28px;
 }
 .invoicee-meta p {
     text-transform: uppercase;
@@ -66,7 +66,6 @@ body  {
     text-transform: uppercase;
 }
 .lead-in-p {
-    font-family: 'Yeseva One', cursive;
     color: #A7A9AB;
     margin-bottom: 12px;
     text-transform: none;
@@ -227,7 +226,6 @@ table tfoot.subtotal tr td:first-child {
     padding-left: 1.5px;
 }
 .message-holder {
-    font-family: 'Yeseva One', cursive;
     color: #A7A9AB;
     padding-right: 53px;
     padding-left: 1px;
@@ -321,7 +319,6 @@ table tfoot.subtotal tr td:first-child {
     .shown-on-mobile h5 {
         letter-spacing: 2px;
         line-height: 1.5;
-        font-family: 'Museo Sans', sans-serif;
         font-size: 13px;
         margin-bottom: 30px;
     }

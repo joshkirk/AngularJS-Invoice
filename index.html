@@ -9,40 +9,23 @@
     <link href="css/xeditable.css" rel="stylesheet">
 
     <link href="bootstrap-3.1.1/css/bootstrap.css" rel="stylesheet">
-
-    <link href="http://fonts.googleapis.com/css?family=Yeseva+One" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
     <script src="angular/ui-bootstrap-tpls-0.13.0.min.js"></script>
     <script src="bootstrap-3.1.1/js/bootstrap.min.js"></script>
     <script src="js/xeditable.min.js"></script>
     <script src="js/invoicer.js"></script>
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <script src="//use.typekit.net/zgi0xsd.js"></script>
-    <script>try{Typekit.load();}catch(e){}</script>
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-63323655-1', 'auto');
-        ga('send', 'pageview');
-
-    </script>
 </head>
 <body ng-controller="invController">
-<div class="shown-on-mobile"><div class="shown-on-mobile-inner"><h5>Sorry, this was meant to be viewed on a desktop computer, in order to export to PDF. Google Chrome is recommended.</h5><img src="images/invoice-logo.svg"></div></div>
+
+<!-- WE HOPE YOU FIND THIS USEFUL. YOU CAN FIND US AT THIRDWISHCREATIVE.COM IF YOU WANT TO CHECK OUT OUR OTHER STUFF OR GET IN TOUCH. -->
+
+<div class="shown-on-mobile"><div class="shown-on-mobile-inner"><h5>Sorry, this was meant to be viewed on a desktop computer, in order to export to PDF. Google Chrome is recommended.</h5><img id="mobile-logo" src="http://placehold.it/250x200"></div></div>
 <div class="container ng-hide" ng-show="contentLoaded">
     <div class="row logo-row">
         <div class="col-xs-9"></div>
-        <div class="col-xs-3 nopadding-lr"><img id="invoice-logo" src="images/invoice-logo.svg"> </div>
+        <div class="col-xs-3 nopadding-lr"><img id="invoice-logo" src="http://placehold.it/300x275"></div>
     </div>
     <div class="row top-meta-row">
         <div class="col-xs-9 invoicee-meta">
@@ -50,9 +33,9 @@
             <p editable-text="invoice.to_address" class="top-street">{{invoice.to_address}}</p>
             <div><span editable-text="invoice.to_city" class="top-city">{{invoice.to_city}},</span> <span editable-text="invoice.to_state" e-style="width: 50px">{{invoice.to_state}} </span> <span editable-text="invoice.to_zip" e-style="width: 70px">{{invoice.to_zip}}</span></div>
         </div>
-        <div class="col-xs-3 invoicee-meta nopadding-lr">
+        <div class="col-xs-3 invoicee-meta">
             <p class="our-top-name" editable-text="our_address">{{our_address}}</p>
-            <p class="our-top-street" editable-text="our_address_linetwo"">{{our_address_linetwo}}</p>
+            <p class="our-top-street" editable-text="our_address_linetwo">{{our_address_linetwo}}</p>
             <div><span class="our-top-city" editable-text="our_city">{{our_city}},</span> <span editable-text="our_state" e-style="width: 50px">{{our_state}}</span> <span editable-text="our_zip" e-style="width: 70px">{{our_zip}}</span></div>
         </div>
     </div>
