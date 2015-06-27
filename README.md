@@ -21,8 +21,6 @@ A directive like so would be great:
 
 
 ```
-#!javascript
-
 invoicer.directive('removeOnClick', function() {
     return {
         link: function(scope, elt, attrs) {
@@ -32,14 +30,11 @@ invoicer.directive('removeOnClick', function() {
         }
     }
 });
-
 ```
 
 Then in the HTML 
 
 ```
-#!html
-
 <tr remove-on-click ng-repeat="item in invoice.line_items" ng-hide="(item.price == 0)">
     <td>
         <p>
