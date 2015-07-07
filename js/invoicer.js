@@ -25,10 +25,6 @@
         $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
         $scope.format = $scope.formats[0];
 
-
-
-
-
         $scope.our_address = "555 E Wisconsin Ave";
         $scope.our_address_linetwo = "Unit 200";
         $scope.our_city = "Milwaukee";
@@ -41,7 +37,6 @@
         $scope.invoice = work;
         $scope.sidebar = notes;
 
-
         $scope.getSubTotal = function(){
             var subtotal=0;
             for(var i=0; i < $scope.invoice.line_items.length; i++) {
@@ -51,16 +46,28 @@
             return subtotal;
         };
 
+        // Add new item to invoice
         $scope.addItem = function() {
             $scope.invoice.line_items.push(this.invoice.temp);
             $scope.invoice.temp = {};
 
         };
+
+        // Remove item from invoice
+        $scope.removeItem = function(idx) {
+            $scope.invoice.line_items.splice(idx, 1);
+        };
+
+        // Add note to invoice sidebar
         $scope.addNote = function() {
             $scope.sidebar.note.push(this.sidebar.temp);
             $scope.sidebar.temp = {};
         };
 
+        // Remove item from invoice sidebar
+        $scope.removeNote = function(idx) {
+            $scope.sidebar.note.splice(idx, 1);
+        };
 
         $scope.contentLoaded = true;
 
@@ -80,6 +87,7 @@
 
         ]
     };
+
     // SOME ITEMS IN THE OBJECTS BELOW ARE NOT USED IN THE THIRD WISH INVOICE.HTML
     var work =
     {
