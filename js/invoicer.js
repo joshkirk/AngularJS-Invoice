@@ -46,22 +46,28 @@
             return subtotal;
         };
 
-        // Remove line item from array 
-        $scope.removeItem = function(idx) {
-            $scope.invoice.line_items.splice(idx, 1);
-        }
-
+        // Add new item to invoice
         $scope.addItem = function() {
             $scope.invoice.line_items.push(this.invoice.temp);
             $scope.invoice.temp = {};
 
         };
 
+        // Remove item from invoice
+        $scope.removeItem = function(idx) {
+            $scope.invoice.line_items.splice(idx, 1);
+        };
+
+        // Add note to invoice sidebar
         $scope.addNote = function() {
             $scope.sidebar.note.push(this.sidebar.temp);
             $scope.sidebar.temp = {};
         };
 
+        // Remove item from invoice sidebar
+        $scope.removeNote = function(idx) {
+            $scope.sidebar.note.splice(idx, 1);
+        };
 
         $scope.contentLoaded = true;
 
@@ -81,6 +87,7 @@
 
         ]
     };
+
     // SOME ITEMS IN THE OBJECTS BELOW ARE NOT USED IN THE THIRD WISH INVOICE.HTML
     var work =
     {

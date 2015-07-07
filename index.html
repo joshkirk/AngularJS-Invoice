@@ -115,8 +115,9 @@
                 </div>
             </div>
             <div class="col-xs-3 notes nopadding-lr">
-                <div ng-repeat="item in sidebar.note"  ng-hide="(item.title == 0 || item.body == 0)">
-                    <p class="note-header" editable-text="sidebar.note[$index].title" e-style="width: 294px;">{{item.title}}</p>
+                <div ng-repeat="item in sidebar.note" ng-mouseenter="close=true" ng-mouseleave="close=false">
+                    <div ng-click="removeNote($index)" ng-show="close" class="remove-button glyphicon glyphicon-remove"></div>
+                    <p class="note-header" editable-text="sidebar.note[$index].title" e-style="width: 294px;" style="display: inline-block;">{{item.title}}</p>
                     <p class="note-body" editable-textarea="sidebar.note[$index].body" e-style="width: 294px; height: 80px;">{{item.body}}</p>
                 </div>
 
