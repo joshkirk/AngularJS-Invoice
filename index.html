@@ -4,39 +4,35 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Angularjs Invoice</title>
 
-
-    <link href="css/xeditable.css" rel="stylesheet">
-
-    <link href="bootstrap-3.1.1/css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
-    <script src="angular/ui-bootstrap-tpls-0.13.0.min.js"></script>
-    <script src="bootstrap-3.1.1/js/bootstrap.min.js"></script>
-    <script src="js/xeditable.min.js"></script>
-    <script src="js/invoicer.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
+    <!-- favicons/icons -->
+    <!--<link rel="icon" type="image/png" href="favicons/your-favicon-32x32.png" sizes="32x32" />-->
+    <!--<link rel="icon" type="image/png" href="favicons/your-favicon-16x16.png" sizes="16x16" />-->
+
+
 </head>
 <body ng-controller="invController">
-
-<!-- WE HOPE YOU FIND THIS USEFUL. YOU CAN FIND US AT THIRDWISHCREATIVE.COM IF YOU WANT TO CHECK OUT OUR OTHER STUFF OR GET IN TOUCH. -->
-
-<div class="shown-on-mobile"><div class="shown-on-mobile-inner"><h5>Sorry, this was meant to be viewed on a desktop computer, in order to export to PDF. Google Chrome is recommended.</h5><img id="mobile-logo" src="http://placehold.it/250x200"></div></div>
+<div class="shown-on-mobile"><div class="shown-on-mobile-inner"><h5>Sorry, this was meant to be viewed on a desktop computer, in order to export to PDF. Google Chrome is recommended.</h5><img src="images/invoice-logo.png"></div></div>
 <div class="container ng-hide" ng-show="contentLoaded">
     <div class="row logo-row">
         <div class="col-xs-9"></div>
-        <div class="col-xs-3 nopadding-lr"><img id="invoice-logo" src="http://placehold.it/300x275"></div>
+        <div class="col-xs-3 nopadding-lr"><img id="invoice-logo" src="http://placehold.it/300x225"> </div>
     </div>
     <div class="row top-meta-row">
         <div class="col-xs-9 invoicee-meta">
             <p editable-text="invoice.to_company" class="top-name">{{invoice.to_company}}</p>
             <p editable-text="invoice.to_address" class="top-street">{{invoice.to_address}}</p>
-            <div><span editable-text="invoice.to_city" class="top-city">{{invoice.to_city}},</span> <span editable-text="invoice.to_state" e-style="width: 50px">{{invoice.to_state}} </span> <span editable-text="invoice.to_zip" e-style="width: 70px">{{invoice.to_zip}}</span></div>
+            <div><span editable-text="invoice.to_city" class="top-city">{{invoice.to_city}}</span> <span editable-text="invoice.to_state" e-style="width: 50px">{{invoice.to_state}} </span> <span editable-text="invoice.to_zip" e-style="width: 70px">{{invoice.to_zip}}</span></div>
         </div>
-        <div class="col-xs-3 invoicee-meta">
+        <div class="col-xs-3 invoicee-meta nopadding-lr">
             <p class="our-top-name" editable-text="our_address">{{our_address}}</p>
             <p class="our-top-street" editable-text="our_address_linetwo">{{our_address_linetwo}}</p>
-            <div><span class="our-top-city" editable-text="our_city">{{our_city}},</span> <span editable-text="our_state" e-style="width: 50px">{{our_state}}</span> <span editable-text="our_zip" e-style="width: 70px">{{our_zip}}</span></div>
+            <div><span class="our-top-city" editable-text="our_city">{{our_city}}</span> <span editable-text="our_state" e-style="width: 50px">{{our_state}}</span> <span editable-text="our_zip" e-style="width: 70px">{{our_zip}}</span></div>
         </div>
     </div>
     <div class="row project-meta-row">
@@ -47,20 +43,23 @@
             <table class="table">
                 <thead>
                 <tr>
-                    <th><span>DESCRIPTION</span></th>
-                    <th><span>MILESTONE</span></th>
-                    <th><span>TOTAL</span></th>
+                    <th><span editable-text="firstThead">{{firstThead}}</span></th>
+                    <th><span editable-text="secondThead">{{secondThead}}</span></th>
+                    <th><span editable-text="thirdThead">{{thirdThead}}</span></th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr ng-repeat="item in invoice.line_items" ng-hide="(item.price == 0)">
+                <tbody ui-sortable ng-model="invoice.line_items">
+                <tr ng-repeat="item in invoice.line_items" ng-mouseenter="close=true" ng-mouseleave="close=false">
                     <td>
-                        <p>
-                            <span editable-text="invoice.line_items[$index].title" e-style="width: 350px">{{item.title}}</span>
-                        </p>
+                        <p editable-text="item.title" e-style="width: 325px" style="display: inline-block;">{{item.title}}</p>
+                        <div ng-click="removeItem($index)" ng-show="close" class="remove-button fa fa-close"></div>
                     </td>
-                    <td><p editable-text="invoice.line_items[$index].milestone" e-style="width: 87px">{{item.milestone}}</p></td>
-                    <td><p editable-text="invoice.line_items[$index].price" e-style="width: 87px">{{item.price | number}}</p></td>
+                    <td>
+                        <p editable-text="item.milestone" e-style="width: 87px">{{item.milestone}}</p>
+                    </td>
+                    <td class="price">
+                        <p editable-text="item.price" e-style="width: 87px" onbeforesave="checkValue($data)">{{item.price | number}}</p>
+                    </td>
                 </tr>
 
                 <tr id="dynamicInsert" class="warning" ng-show="invoice.temp.title">
@@ -77,7 +76,7 @@
 
             <div class="total-meta-holder">
                 <span class="">Total: </span>
-                <span class=""><strong>${{ getSubTotal() | number}}</strong></span>
+                <span class=""><strong>${{ getTotal() | number}}</strong></span>
             </div>
 
             <div class="total-meta-holder two">
@@ -90,9 +89,10 @@
                 </span>
             </div>
         </div>
-        <div class="col-xs-3 notes nopadding-lr">
-            <div ng-repeat="item in sidebar.note"  ng-hide="(item.title == 0 || item.body == 0)">
-                <p class="note-header" editable-text="sidebar.note[$index].title" e-style="width: 294px;">{{item.title}}</p>
+        <div ui-sortable ng-model="sidebar.note" class="col-xs-3 notes nopadding-lr">
+            <div ng-repeat="item in sidebar.note" ng-mouseenter="close=true" ng-mouseleave="close=false" class="note-item">
+                <p class="note-header" editable-text="sidebar.note[$index].title" e-style="width: 183px;" style="display: inline-block;">{{item.title}}</p>
+                <div ng-click="removeNote($index)" ng-show="close" class="remove-button fa fa-close"></div>
                 <p class="note-body" editable-textarea="sidebar.note[$index].body" e-style="width: 294px; height: 80px;">{{item.body}}</p>
             </div>
 
@@ -105,22 +105,21 @@
     <div class="row message-holder-row">
         <div class="col-xs-9 message-holder">
 
-                <p class="addressee" editable-text="addressee">{{addressee}},</p>
-                <p class="message" editable-textarea="personal" e-style="width: 750px; height: 120px;">{{personal}}</p>
-                <p class="sincerely" >Sincerely,</p>
-                <p class="sincerely" >The Genies at Third Wish Creative</p>
+            <p class="addressee" editable-text="addressee">{{addressee}},</p>
+            <p class="message" editable-textarea="personal" e-onChange="setTimeout(function(){var printHeight = $('.message-holder').height();$('.tm').height(printHeight);}, 300)" e-style="width: 750px; height: 120px;">{{personal}}</p>
+            <p class="sincerely" editable-text="closing">{{closing}}</p>
+            <p class="sincerely" editable-text="signOff">{{signOff}}</p>
 
         </div>
         <div class="col-xs-3 tm">
-            <div style="background-image: url('images/triangles.svg');">
-            </div>
+
         </div>
     </div>
     <div class="row">
         <div class="col-xs-12 nopadding-l">
-            <p class="our-meta">THIRDWISHCREATIVE.COM  -  TALK@THIRDWISHCREATIVE.COM</p>
+            <p class="our-meta">YOURWEBSITE.COM  -  YOU@YOURWEBSITE.COM</p>
         </div>
-        <button class="glyphicon glyphicon-save print-btn" onclick="print()"></button>
+
     </div>
     <div class="editContainer" ng-mouseenter="showEditor=true" ng-mouseleave="showEditor=false">
         <div ng-show="showEditor" ng-include src="'editor.html'"></div>
@@ -128,7 +127,14 @@
 
 </div>
 
-<!------------------ SCRIPTS ------------------->
+<!-------------------- LIBS -------------------->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.13/angular.min.js"></script>
+<script src="js/sortable.js"></script>
+<script src="js/xeditable.min.js"></script>
+<!------------------ SCRIPTS/APP ------------------->
+<script src="js/invoice.js"></script>
 
 
 </body>
