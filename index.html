@@ -17,7 +17,7 @@
 
 </head>
 <body ng-controller="invController">
-<div class="shown-on-mobile"><div class="shown-on-mobile-inner"><h5>Sorry, this was meant to be viewed on a desktop computer, in order to export to PDF. Google Chrome is recommended.</h5><img src="images/invoice-logo.png"></div></div>
+<div class="shown-on-mobile"><div class="shown-on-mobile-inner"><h5>Sorry, this was meant to be viewed on a desktop computer, in order to export to PDF. Google Chrome is recommended.</h5><img src="http://placehold.it/300x225"></div></div>
 <div class="container ng-hide" ng-show="contentLoaded">
     <div class="row logo-row">
         <div class="col-xs-9"></div>
@@ -25,9 +25,9 @@
     </div>
     <div class="row top-meta-row">
         <div class="col-xs-9 invoicee-meta">
-            <p editable-text="invoice.to_company" class="top-name">{{invoice.to_company}}</p>
-            <p editable-text="invoice.to_address" class="top-street">{{invoice.to_address}}</p>
-            <div><span editable-text="invoice.to_city" class="top-city">{{invoice.to_city}}</span> <span editable-text="invoice.to_state" e-style="width: 50px">{{invoice.to_state}} </span> <span editable-text="invoice.to_zip" e-style="width: 70px">{{invoice.to_zip}}</span></div>
+            <p editable-text="to_company" class="top-name">{{to_company}}</p>
+            <p editable-text="to_address" class="top-street">{{to_address}}</p>
+            <div><span editable-text="to_city" class="top-city">{{to_city}}</span> <span editable-text="to_state" e-style="width: 50px">{{to_state}} </span> <span editable-text="to_zip" e-style="width: 70px">{{to_zip}}</span></div>
         </div>
         <div class="col-xs-3 invoicee-meta nopadding-lr">
             <p class="our-top-name" editable-text="our_address">{{our_address}}</p>
@@ -36,10 +36,10 @@
         </div>
     </div>
     <div class="row project-meta-row">
-        <div class="col-xs-12 nopadding-lr"><span editable-text="invoice.number">#{{invoice.number}}</span> &nbsp;///&nbsp; <span editable-text="invoice.project_name">{{invoice.project_name}}</span> &nbsp;///&nbsp; <span>{{date | date:'MM/dd/yyyy'}}</span></div>
+        <div class="col-xs-12 nopadding-lr"><span editable-text="number">#{{number}}</span> &nbsp;///&nbsp; <span editable-text="project_name">{{project_name}}</span> &nbsp;///&nbsp; <span>{{date | date:'MM/dd/yyyy'}}</span></div>
     </div>
     <div class="row main-content-row">
-        <div class="col-xs-9 table-holder nopadding-l"><p editable-text="invoice.lead_in" e-style="width: 300px" class="lead-in-p">{{invoice.lead_in}}</p>
+        <div class="col-xs-9 table-holder nopadding-l"><p editable-text="lead_in" e-style="width: 300px" class="lead-in-p">{{lead_in}}</p>
             <table class="table">
                 <thead>
                 <tr>
@@ -82,9 +82,9 @@
             <div class="total-meta-holder two">
 
                 <span class="">Due By: </span>
-                <span class="input-group" editable-date="dt" e-datepicker-popup="MM-dd-yyyy" is-open="opened" datepicker-options="dateOptions" e-ng-required="true" e-style="width: 170px;">
+                <span class="input-group" editable-date="date" e-datepicker-popup="MM-dd-yyyy" datepicker-options="dateOptions" e-ng-required="true" e-style="width: 170px;">
 
-                    {{dt | date:'MM/dd/yyyy' }}
+                    {{date | date:'MM/dd/yyyy' }}
 
                 </span>
             </div>

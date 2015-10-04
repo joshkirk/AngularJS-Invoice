@@ -11,14 +11,6 @@
 
         $scope.dt = new Date();
 
-
-        $scope.open = function($event) {
-            $event.preventDefault();
-            $event.stopPropagation();
-
-            $scope.opened = true;
-        };
-
         $scope.dateOptions = {
             formatYear: 'yy',
             startingDay: 1
@@ -27,11 +19,21 @@
         $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
         $scope.format = $scope.formats[0];
 
+        // Your address
         $scope.our_address = "555 E Wisconsin Ave";
         $scope.our_address_linetwo = "Unit 200";
         $scope.our_city = "Milwaukee,";
         $scope.our_state = "WI";
         $scope.our_zip = "53203";
+
+        // Their name and address
+        $scope.to_company = "Tobias Funke";
+        $scope.to_address = "3425 sudden valley";
+        $scope.to_city = "Los Angeles,";
+        $scope.to_state = "CA";
+        $scope.to_zip = "43433";
+
+        // Bottom message
         $scope.addressee = "Tobias";
         $scope.personal = "We really enjoyed working with you. Your story is one that we found unique and engaging. " +
         "We hope we were able to grant all your concept, design and development wishes. Please do not hesitate " +
@@ -42,17 +44,19 @@
         $scope.closing = "Sincerely,";
         $scope.signOff = "The company who did this work for you";
 
-        $scope.sidebar = notes;
+        // Project specifics
+        $scope.number = "1";
+        $scope.project_name = "Project Name";
+        $scope.lead_in = "We promised to grant you...";
 
-        $scope.invoice = work;
-        $scope.sidebar = notes;
-
+        // Block the price value from being submitted if it has anything but whole numbers
         $scope.checkValue = function(data) {
             if (isNaN(data)) {
                 return "Numbers only please.";
             }
         };
 
+        // Loop through the line items and get the total. Clicking the X to remove a line item splices the array, removes the line item, and the total adjusts.
         $scope.getTotal = function(){
             var total=0;
             for(var i=0; i < $scope.invoice.line_items.length; i++) {
@@ -71,7 +75,6 @@
         // Remove item from invoice
         $scope.removeItem = function(idx) {
             $scope.invoice.line_items.splice(idx, 1);
-            console.log('line-item index:', idx);
         };
 
         // Add note to invoice
@@ -84,10 +87,16 @@
             $scope.sidebar.note.splice(idx, 1);
         };
 
+        // Assign the line items and notes array to variables
+        $scope.invoice = work;
+        $scope.sidebar = notes;
+
+        // Show the content after all the Model View stuff syncs.
         $scope.contentLoaded = true;
 
     });
 
+    // Sidebar notes array
     var notes =
     {
         note: [
@@ -102,18 +111,10 @@
 
         ]
     };
-    // SOME ITEMS IN THE OBJECTS BELOW ARE NOT USED IN THE THIRD WISH INVOICE.HTML
+
+    // Line item array
     var work =
     {
-        number: "1",
-        project_name: "Project Name",
-        lead_in: "We promised to grant you...",
-        to_company: "Tobias Funke",
-        to_address: "3425 sudden valley",
-        to_city: "Los Angeles,",
-        to_state: "CA",
-        to_zip: "43433",
-        //less_payments: "2000",
         line_items: [
             {
                 title: "Wireframe and brand finalized",

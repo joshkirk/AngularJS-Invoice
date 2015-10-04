@@ -774,6 +774,9 @@ td:first-child {
 .shown-on-mobile {
   display: none;
 }
+.two form {
+  float: right;
+}
 @media only screen and (max-width: 1040px) {
   .shown-on-mobile {
     position: fixed;
