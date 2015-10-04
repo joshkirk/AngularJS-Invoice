@@ -9,4 +9,4 @@ Google Chrome is necessary.
 
 This is a re-usable invoice template that uses AngularJS and [Angular xeditable](http://vitalets.github.io/angular-xeditable/) to allow for the adding and removing of line items and notes, and the editing of almost all the content just by clicking the text. jQuery UI sortable was is used in an Angular wrapper to allow for the sorting of line items and notes. It is meant for use on a full computer in order to save out as PDF.
 
-Click the question mark in the top right to get started. The code in this repository has been white labeled for your use. The structure remains, but fonts and images and copy have been given placeholders. 
+Click the question mark in the top right to get started. The code in this repository has been white labeled for your use. The structure remains, but fonts, images and copy have been given placeholders. 
