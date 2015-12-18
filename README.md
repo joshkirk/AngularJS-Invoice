@@ -1,7 +1,7 @@
 # README #
 # Angularjs_Invoice #
 
-[Live Demo](http://invoice.thirdwishcreative.com)
+[Live Demo](https://thirdwishcreative.com/invoice)
 
 Google Chrome is necessary. 
 
