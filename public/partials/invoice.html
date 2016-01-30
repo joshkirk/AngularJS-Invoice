@@ -1,0 +1,118 @@
+<div class="row logo-row">
+    <div class="col-xs-9">
+        <i class="fa fa-gear" ng-click="show_settings = !show_settings"></i>
+        <div class="settings-holder" ng-show="show_settings">
+            <i onclick="print()" class="fa fa-download"></i>
+            <i class="fa fa-save"></i>
+            <i ui-sref="saved-invoices" class="fa fa-th-list"></i>
+        </div>
+
+    </div>
+    <div class="col-xs-3 nopadding-lr">
+        <img id="invoice-logo" ng-click="show_logo_changer = !show_logo_changer" ng-src="{{yourLogo}}">
+        <div class="logo-changer" ng-show="show_logo_changer">
+            <p type="text" editable-text="yourLogo">{{yourLogo}}</p>
+        </div>
+    </div>
+</div>
+<div class="row top-meta-row">
+    <div class="col-xs-9 invoicee-meta">
+        <p editable-text="to_company" class="top-name">{{to_company}}</p>
+        <p editable-text="to_address" class="top-street">{{to_address}}</p>
+        <div><span editable-text="to_city" class="top-city">{{to_city}}</span> <span editable-text="to_state" e-style="width: 50px">{{to_state}} </span> <span editable-text="to_zip" e-style="width: 70px">{{to_zip}}</span></div>
+    </div>
+    <div class="col-xs-3 invoicee-meta nopadding-lr">
+        <p class="our-top-name" editable-text="our_address">{{our_address}}</p>
+        <p class="our-top-street" editable-text="our_address_linetwo">{{our_address_linetwo}}</p>
+        <div><span class="our-top-city" editable-text="our_city">{{our_city}}</span> <span editable-text="our_state" e-style="width: 50px">{{our_state}}</span> <span editable-text="our_zip" e-style="width: 70px">{{our_zip}}</span></div>
+    </div>
+</div>
+<div class="row project-meta-row">
+    <div class="col-xs-12 nopadding-lr"><span editable-text="number">#{{number}}</span> &nbsp;///&nbsp; <span editable-text="project_name">{{project_name}}</span> &nbsp;///&nbsp; <span>{{date | date:'MM/dd/yyyy'}}</span></div>
+</div>
+<div class="row main-content-row">
+    <div class="col-xs-9 table-holder nopadding-l"><p editable-text="lead_in" e-style="width: 300px" class="lead-in-p">{{lead_in}}</p>
+        <table class="table">
+            <thead>
+            <tr>
+                <th><span editable-text="firstThead">{{firstThead}}</span></th>
+                <th><span editable-text="secondThead">{{secondThead}}</span></th>
+                <th><span editable-text="thirdThead">{{thirdThead}}</span></th>
+            </tr>
+            </thead>
+            <tbody ui-sortable ng-model="invoice.line_items">
+            <tr ng-repeat="item in invoice.line_items" ng-mouseenter="close=true" ng-mouseleave="close=false">
+                <td>
+                    <p editable-text="item.title" e-style="width: 325px" style="display: inline-block;">{{item.title}}</p>
+                    <div ng-click="removeItem($index)" ng-show="close" class="remove-button fa fa-close"></div>
+                </td>
+                <td>
+                    <p editable-text="item.milestone" e-style="width: 87px">{{item.milestone}}</p>
+                </td>
+                <td class="price">
+                    <p editable-text="item.price" e-style="width: 87px" onbeforesave="checkValue($data)">{{item.price | number}}</p>
+                </td>
+            </tr>
+
+            <tr id="dynamicInsert" class="warning" ng-show="invoice.temp.title">
+                <td>
+                    <dl>
+                        <dt>{{invoice.temp.title}}</dt>
+                    </dl>
+                </td>
+                <td>{{invoice.temp.milestone}}</td>
+                <td>${{invoice.temp.price}}</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="total-meta-holder">
+            <span class="">Total: </span>
+            <span class=""><strong>${{ getTotal() | number}}</strong></span>
+        </div>
+
+        <div class="total-meta-holder two">
+
+            <span class="">Due By: </span>
+                <span class="input-group" editable-date="date" e-datepicker-popup="MM-dd-yyyy" datepicker-options="dateOptions" e-ng-required="true" e-style="width: 170px;">
+
+                    {{date | date:'MM/dd/yyyy' }}
+
+                </span>
+        </div>
+    </div>
+    <div ui-sortable ng-model="sidebar.note" class="col-xs-3 notes nopadding-lr">
+        <div ng-repeat="item in sidebar.note" ng-mouseenter="close=true" ng-mouseleave="close=false" class="note-item">
+            <p class="note-header" editable-text="sidebar.note[$index].title" e-style="width: 183px;" style="display: inline-block;">{{item.title}}</p>
+            <div ng-click="removeNote($index)" ng-show="close" class="remove-button fa fa-close"></div>
+            <p class="note-body" editable-textarea="sidebar.note[$index].body" e-style="width: 294px; height: 80px;">{{item.body}}</p>
+        </div>
+
+        <p class="note-header">{{sidebar.temp.title}}</p>
+        <p class="note-body">{{sidebar.temp.body}}</p>
+
+    </div>
+
+</div>
+<div class="row message-holder-row">
+    <div class="col-xs-9 message-holder">
+
+        <p class="addressee" editable-text="addressee">{{addressee}},</p>
+        <p class="message" editable-textarea="personal" e-onChange="setTimeout(function(){var printHeight = $('.message-holder').height();$('.tm').height(printHeight);}, 300)" e-style="width: 750px; height: 120px;">{{personal}}</p>
+        <p class="sincerely" editable-text="closing">{{closing}}</p>
+        <p class="sincerely" editable-text="signOff">{{signOff}}</p>
+
+    </div>
+    <div class="col-xs-3 tm">
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12 nopadding-l">
+        <p class="our-meta" editable-text="yourSite">{{yourSite}}</p> &nbsp;-&nbsp; <p class="our-meta" editable-text="yourEmail">{{yourEmail}}</p>
+    </div>
+
+</div>
+<div class="editContainer" ng-mouseenter="showEditor=true" ng-mouseleave="showEditor=false">
+    <div ng-show="showEditor" ng-include src="'partials/editor.html'"></div>
+</div>

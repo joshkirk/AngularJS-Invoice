@@ -1,10 +1,25 @@
 (function() {
 
-    var invoicer = angular.module('invoicer', ["xeditable", 'ui.sortable']);
+    var invoicer = angular.module('invoicer', ["xeditable", 'ui.sortable', 'ui.router']);
 
     invoicer.run(function(editableOptions) {
         editableOptions.theme = 'bs3';
     });
+
+    invoicer.config(function($stateProvider, $urlRouterProvider) {
+
+        $urlRouterProvider.otherwise('/');
+
+        $stateProvider.state('invoice', {
+                url: '/',
+                templateUrl: 'partials/invoice.html'
+            }).state('saved-invoices', {
+                url: '/saved-invoices',
+                templateUrl: 'partials/saved-invoices.html'
+            });
+
+    });
+
 
     invoicer.controller('invController', function($scope){
         $scope.date = new Date();
@@ -19,6 +34,9 @@
         $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
         $scope.format = $scope.formats[0];
 
+
+        // Your logo
+        $scope.yourLogo = "http://placehold.it/300x225";
         // Your address
         $scope.our_address = "555 E Wisconsin Ave";
         $scope.our_address_linetwo = "Unit 200";
@@ -43,11 +61,13 @@
         $scope.thirdThead = "TOTAL";
         $scope.closing = "Sincerely,";
         $scope.signOff = "The company who did this work for you";
+        $scope.yourSite = "yourwebsite.com";
+        $scope.yourEmail = "you@yourwebsite.com";
 
         // Project specifics
         $scope.number = "1";
         $scope.project_name = "Project Name";
-        $scope.lead_in = "We promised to grant you...";
+        $scope.lead_in = "Here's the work we did for you";
 
         // Block the price value from being submitted if it has anything but whole numbers
         $scope.checkValue = function(data) {
@@ -93,6 +113,8 @@
 
         // Show the content after all the Model View stuff syncs.
         $scope.contentLoaded = true;
+
+
 
     });
 
