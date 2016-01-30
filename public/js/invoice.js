@@ -83,6 +83,7 @@
                 var line = $scope.invoice.line_items[i];
                 total += (line.price * 1);
             }
+            $scope.total = total;
             return total;
         };
 

@@ -1,0 +1,28 @@
+{
+  "name": "angularjs-invoice",
+  "version": "1.0.0",
+  "description": "[Live Demo](https://thirdwishcreative.com/invoice)",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "express": "^4.13.4",
+    "mongoose": "^4.3.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+      "node": "5.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshkirk/AngularJS-Invoice.git"
+  },
+  "author": "Josh Kirk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joshkirk/AngularJS-Invoice/issues"
+  },
+  "homepage": "https://github.com/joshkirk/AngularJS-Invoice#readme"
+}
